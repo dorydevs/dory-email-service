@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const emailRoutes = require("./routes/email.routes");
 const { errorMiddleware } = require("./utils/error-handler");
 
-// Load environment variables
+// Load environment variables from .env file
 dotenv.config();
 
 // Create Express app
