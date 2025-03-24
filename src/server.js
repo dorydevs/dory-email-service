@@ -2,7 +2,7 @@ const app = require("./app");
 const emailService = require("./services/email.service");
 
 // Get port from environment or default to 3000
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 9008;
 
 // Start the server
 const server = app.listen(PORT, async () => {
