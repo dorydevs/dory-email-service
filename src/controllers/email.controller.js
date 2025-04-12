@@ -1,6 +1,7 @@
 const emailService = require("../services/email.service");
 const templateService = require("../services/template.service");
 const { ApiError, asyncHandler } = require("../utils/error-handler");
+const resendService = require("../utils/resend-email-service");
 
 /**
  * Send an email using a template
@@ -23,7 +24,15 @@ const sendEmail = asyncHandler(async (req, res) => {
   }
 
   // Send the email
-  const result = await emailService.sendEmailWithTemplate(
+  // const result = await emailService.sendEmailWithTemplate(
+  //   to,
+  //   subject,
+  //   templateName,
+  //   data || {},
+  //   options || {}
+  // );
+
+  const result = await resendService.sendEmailWithTemplate(
     to,
     subject,
     templateName,
