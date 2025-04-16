@@ -1,4 +1,4 @@
-const emailService = require("../services/email.service");
+// const emailService = require("../services/email.service");
 const templateService = require("../services/template.service");
 const { ApiError, asyncHandler } = require("../utils/error-handler");
 const resendService = require("../utils/resend-email-service");
