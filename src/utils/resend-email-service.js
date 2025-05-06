@@ -107,6 +107,8 @@ const sendEmailWithTemplate = async (
       resend.emails.send(emailOptions)
     );
 
+    console.log("result id >>>>", result.id);
+
     return {
       messageId: result.id,
     };
