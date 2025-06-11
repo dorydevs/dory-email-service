@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Action Needed for Your Account</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333333;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: #374151;
+            margin-bottom: 24px;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <h1>Action Needed for Your Account</h1>
+
+        <p>Hi {{fullname}},</p>
+
+        <p>
+            We noticed that we need a bit more information to complete your account
+            setup with <strong>{{merchantName}}</strong>.
+        </p>
+
+        <p>
+            When you have a moment, please open the app to review your account and
+            provide the required details.
+        </p>
+
+        <p>Thank you,</p>
+
+        <div class="footer">&copy; {{year}}. All rights reserved.</div>
+    </div>
+</body>
+
+</html>
