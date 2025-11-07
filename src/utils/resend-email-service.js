@@ -1,6 +1,8 @@
 const { Resend } = require("resend");
 const dotenv = require("dotenv");
 const templateService = require("../services/template.service");
+const path = require("path");
+const fs = require("fs");
 
 // Load environment variables
 dotenv.config();
@@ -100,6 +102,39 @@ const sendEmailWithTemplate = async (
     // Add reply-to if provided
     if (options.replyTo) {
       emailOptions.reply_to = options.replyTo;
+    }
+
+    // ✅ Handle optional attachments
+
+    if (options.attachments && Array.isArray(options.attachments)) {
+      const validAttachments = options.attachments
+        .map((file) => {
+          try {
+            let filePath = file.path;
+            // If the path is not absolute, resolve it to src/attachments
+            if (filePath && !path.isAbsolute(filePath)) {
+              filePath = path.resolve(__dirname, "../attachments", filePath);
+            }
+            if (!filePath || !fs.existsSync(filePath)) {
+              console.warn(`Attachment not found: ${filePath}`);
+              return null;
+            }
+
+            const fileBuffer = fs.readFileSync(filePath);
+            return {
+              filename: file.filename || path.basename(filePath),
+              content: fileBuffer.toString("base64"),
+            };
+          } catch (err) {
+            console.error("Error reading attachment:", err);
+            return null;
+          }
+        })
+        .filter(Boolean);
+
+      if (validAttachments.length > 0) {
+        emailOptions.attachments = validAttachments;
+      }
     }
 
     // Send the email using Resend with retry mechanism
