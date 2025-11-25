@@ -1,5 +1,9 @@
 const express = require("express");
-const { sendEmail, getTemplates } = require("../controllers/email.controller");
+const {
+  sendEmail,
+  getTemplates,
+  sendBatchEmails,
+} = require("../controllers/email.controller");
 
 const router = express.Router();
 
@@ -16,5 +20,12 @@ router.post("/send", sendEmail);
  * @access Public
  */
 router.get("/templates", getTemplates);
+
+/**
+ * @route POST /api/email/batch-send
+ * @desc Send batch emails using a template
+ * @access Public
+ */
+router.post("/batch-send", sendBatchEmails);
 
 module.exports = router;
