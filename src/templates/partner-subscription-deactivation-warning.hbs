@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>Account Deactivation Warning</title>
+    <style type="text/css" rel="stylesheet" media="all">
+      @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap");
+      body { width: 100% !important; height: 100%; margin: 0; -webkit-text-size-adjust: none; }
+      a { color: #3869d4; }
+      a img { border: none; }
+      td { word-break: break-word; }
+      .preheader { display: none !important; visibility: hidden; mso-hide: all; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; }
+      body, td, th { font-family: "Nunito Sans", Helvetica, Arial, sans-serif; }
+      h1 { margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left; }
+      td, th { font-size: 16px; }
+      p { margin: 0.4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545e; }
+      .email-wrapper { width: 100%; margin: 0; padding: 0; background-color: #f2f4f6; }
+      .email-content { width: 100%; margin: 0; padding: 0; }
+      .email-masthead { padding: 25px 0; text-align: center; }
+      .email-masthead_name { font-size: 16px; font-weight: bold; color: #a8aaaf; text-decoration: none; text-shadow: 0 1px 0 white; }
+      .email-body_inner { width: 100%; margin: 0 auto; background-color: #ffffff; max-width: 570px; }
+      .email-footer { width: 570px; margin: 0 auto; text-align: center; }
+      .content-cell { padding: 45px; }
+      @media only screen and (max-width: 600px) {
+        .email-body_inner, .email-footer { width: 100% !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <span class="preheader">Urgent: Your Dory account will be deactivated tomorrow — act now.</span>
+    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center">
+          <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+
+            <tr>
+              <td class="email-masthead">
+                <span class="email-masthead_name">DORY</span>
+              </td>
+            </tr>
+
+            <!-- Email Body -->
+            <tr>
+              <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="content-cell">
+                      <div class="f-fallback">
+                        <h1>Hi {{partnerName}},</h1>
+
+                        <!-- Urgent red banner -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+                          <tr>
+                            <td style="background-color: #fde8e8; border-left: 4px solid #e53e3e; padding: 16px 20px; border-radius: 4px;">
+                              <p style="margin: 0; color: #9b1c1c; font-size: 15px;">
+                                <strong>Your account will be deactivated on {{renewalDate}}.</strong>
+                                Renew your subscription today to prevent losing access.
+                              </p>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <p>This is an urgent notice that your Dory partner subscription expires <strong>tomorrow, {{renewalDate}}</strong>. If your subscription is not renewed, your store will be deactivated and will no longer be visible to customers.</p>
+
+                        <p>What happens when your account is deactivated:</p>
+                        <ul style="color: #51545e; font-size: 16px; line-height: 1.8; padding-left: 20px;">
+                          <li>Your store will be hidden from the Dory app</li>
+                          <li>Customers will not be able to place new orders</li>
+                          <li>Your store listing and menu will be suspended</li>
+                        </ul>
+
+                        <table width="100%" cellpadding="0" cellspacing="0" style="margin: 24px 0; border: 1px solid #eee; border-radius: 4px;">
+                          <tr>
+                            <td style="padding: 12px 16px; background-color: #f9f9f9; border-bottom: 1px solid #eee;">
+                              <span style="color: #888; font-size: 14px;">Deactivation Date</span>
+                            </td>
+                            <td style="padding: 12px 16px; background-color: #f9f9f9; border-bottom: 1px solid #eee; text-align: right;">
+                              <strong style="color: #e53e3e; font-size: 14px;">{{renewalDate}}</strong>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td style="padding: 12px 16px;">
+                              <span style="color: #888; font-size: 14px;">Renewal Amount</span>
+                            </td>
+                            <td style="padding: 12px 16px; text-align: right;">
+                              <strong style="color: #333; font-size: 14px;">₱{{amount}}</strong>
+                            </td>
+                          </tr>
+                        </table>
+
+                        <p>To reactivate or keep your account active, please top up your Dory wallet with at least <strong>₱{{amount}}</strong> before the expiry date. Your subscription will be automatically renewed once sufficient balance is available.</p>
+
+                        <p>If you believe this is an error or need help, please contact our support team immediately.</p>
+
+                        <p>Best regards,<br />The DORY Team</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td>
+                <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="content-cell" align="center">
+                      <p class="f-fallback sub align-center">&copy; 2025 DORY PH, INC. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">
+                        DORY PH, INC.<br />
+                        2nd Floor, Castelo Commercial Building,
+                        Purok 1, Brgy. Sotero Nuesa,
+                        Roxas, Isabela
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
