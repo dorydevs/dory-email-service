@@ -110,6 +110,15 @@ const sendEmailWithTemplate = async (
       const validAttachments = options.attachments
         .map((file) => {
           try {
+            // Inline base64 content (e.g. a PDF generated at request time).
+            // Takes precedence over path so callers can attach dynamic files.
+            if (file.content) {
+              return {
+                filename: file.filename || "attachment",
+                content: file.content,
+              };
+            }
+
             let filePath = file.path;
             // If the path is not absolute, resolve it to src/attachments
             if (filePath && !path.isAbsolute(filePath)) {
