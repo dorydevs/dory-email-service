@@ -1,0 +1,412 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
+    <title>Your Dory gear is on the way</title>
+    <style type="text/css" rel="stylesheet" media="all">
+      @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700,800&display=swap");
+
+      body {
+        width: 100% !important;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: none;
+        background-color: #f0faf3;
+        color: #234232;
+      }
+
+      body, td, th {
+        font-family: "Nunito Sans", Helvetica, Arial, sans-serif;
+      }
+
+      table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      td { word-break: break-word; }
+
+      .preheader {
+        display: none !important;
+        visibility: hidden;
+        mso-hide: all;
+        font-size: 1px;
+        line-height: 1px;
+        max-height: 0;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+
+      .email-wrapper { width: 100%; margin: 0; padding: 0; background-color: #f0faf3; }
+      .email-content { width: 100%; margin: 0; padding: 0; }
+
+      .email-masthead { padding: 28px 0 18px; text-align: center; }
+      .email-masthead_name {
+        font-size: 18px;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+        color: #22a85a;
+        text-decoration: none;
+      }
+
+      .email-body_inner {
+        width: 570px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 6px 22px rgba(31, 138, 76, 0.12);
+      }
+
+      /* background-color is the Outlook fallback. Without it the gradient drops
+         out and the white hero text lands on white. */
+      .email-hero {
+        background-color: #1f8a4c;
+        background-image: linear-gradient(135deg, #22a85a 0%, #15833f 100%);
+        padding: 34px 45px;
+        text-align: left;
+      }
+      .email-hero .badge {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 5px 12px;
+        background-color: #15833f;
+        border-radius: 999px;
+        color: #eafff1;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+      }
+      .email-hero h1 { margin: 0; color: #ffffff; font-size: 24px; line-height: 1.25; font-weight: 800; }
+      .email-hero p { margin: 10px 0 0; color: #d8f5e3; font-size: 14px; line-height: 1.55; }
+
+      .content-cell { padding: 30px 45px 38px; }
+      .content-cell p { color: #3c5a48; font-size: 15px; line-height: 1.65; margin: 0 0 18px; }
+
+      /* Courier + tracking is the reason this email exists, so it sits first and
+         reads as a card rather than a sentence. */
+      .shipment {
+        background-color: #f4fbf6;
+        border: 1px solid #d7eede;
+        border-radius: 10px;
+      }
+      .shipment-cell { padding: 20px 22px; }
+      .cred-label {
+        color: #1f8a4c;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 11px;
+        letter-spacing: 0.6px;
+        margin: 0 0 5px;
+      }
+      .cred-value {
+        color: #234232;
+        font-size: 16px;
+        font-weight: 700;
+        margin: 0;
+      }
+      /* Monospaced because this is the one string a rider retypes by hand. */
+      .tracking-chip {
+        background-color: #ffffff;
+        border: 1px dashed #a9d8bd;
+        border-radius: 8px;
+        padding: 11px 14px;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 17px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+        color: #15833f;
+      }
+
+      .track-button {
+        display: inline-block;
+        padding: 13px 26px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #ffffff !important;
+        text-decoration: none;
+        border-radius: 8px;
+      }
+      .track-hint { font-size: 13px !important; color: #6b8f7b !important; margin: 12px 0 0 !important; }
+
+      .section-label {
+        color: #1f8a4c;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin: 0 0 12px;
+      }
+
+      .receipt { width: 100%; border-collapse: collapse; margin: 0; }
+      .receipt th {
+        text-align: left;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: #6b8f7b;
+        padding: 0 0 9px;
+        border-bottom: 2px solid #e4f1e9;
+      }
+      .receipt th.amount, .receipt td.amount { text-align: right; }
+      .receipt th.qty, .receipt td.qty { text-align: center; }
+      .receipt td {
+        padding: 13px 0;
+        border-bottom: 1px solid #f0f7f3;
+        font-size: 14px;
+        color: #234232;
+        vertical-align: top;
+      }
+      .receipt .item-name { font-weight: 700; font-size: 15px; }
+      .receipt .item-meta { display: block; font-size: 12px; color: #6b8f7b; margin-top: 3px; }
+      .receipt .qty-pill {
+        display: inline-block;
+        min-width: 14px;
+        padding: 3px 9px;
+        background-color: #f0f7f3;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        color: #3c5a48;
+      }
+      .receipt .empty { color: #6b8f7b; font-style: italic; }
+
+      .totals { width: 100%; border-collapse: collapse; margin: 16px 0 26px; }
+      .totals td { padding: 6px 0; font-size: 14px; color: #3c5a48; }
+      .totals td.amount { text-align: right; font-weight: 600; color: #234232; }
+      .totals tr.grand td {
+        padding: 14px 16px;
+        background-color: #f0faf3;
+        border-top: 2px solid #d7eede;
+        font-size: 17px;
+        font-weight: 800;
+        color: #1f8a4c;
+      }
+
+      .meta { background-color: #f8fbf9; border: 1px solid #e8f2ec; border-radius: 10px; }
+      .meta-cell { padding: 18px 22px; }
+      .meta-value { font-size: 14px; color: #234232; margin: 0; line-height: 1.5; }
+      .meta-ref {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+        font-size: 15px;
+        font-weight: 700;
+        color: #234232;
+        letter-spacing: 0.4px;
+      }
+
+      .confirm-note { background-color: #fffaf0; border: 1px solid #f6e4bf; border-left: 4px solid #e8b53d; border-radius: 10px; }
+      .confirm-cell { padding: 18px 20px; }
+      .confirm-note .confirm-title {
+        margin: 0 0 8px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        color: #a9741a;
+      }
+      .confirm-note p { margin: 0; font-size: 14px; color: #6b5327; line-height: 1.6; }
+
+      .email-footer { width: 570px; margin: 0 auto; text-align: center; }
+      .email-footer p { color: #6b8f7b; font-size: 12px; line-height: 1.6; padding: 22px 0; margin: 0; }
+
+      @media only screen and (max-width: 600px) {
+        .email-body_inner, .email-footer { width: 100% !important; }
+        .email-hero, .content-cell {
+          padding-left: 24px !important;
+          padding-right: 24px !important;
+        }
+        .email-hero h1 { font-size: 21px !important; }
+        .tracking-chip { font-size: 15px !important; letter-spacing: 0.8px !important; }
+        /* Full-width tap target on phones: the wrapper has to stretch too, or the
+           block-level anchor just fills a shrink-to-fit table. */
+        .track-button-wrap { width: 100% !important; }
+        .track-button { display: block !important; text-align: center !important; }
+        /* Courier and tracking sit side by side on desktop; too tight to share a
+           row once the card drops under ~380px, so they stack. */
+        .stack-col {
+          display: block !important;
+          width: 100% !important;
+          padding-right: 0 !important;
+        }
+        .stack-col-last { padding-top: 16px !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <span class="preheader">{{courier}} is delivering your gear. Tracking number {{trackingNumber}}.</span>
+    <!-- Pads the inbox preview so the masthead does not bleed into it. -->
+    <div style="display: none; max-height: 0; overflow: hidden; mso-hide: all;">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center">
+          <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td class="email-masthead">
+                <a href="https://dorydelivery.com" class="email-masthead_name" style="color: #22a85a; text-decoration: none;">DORY RIDER</a>
+              </td>
+            </tr>
+
+            <tr>
+              <td width="570" cellpadding="0" cellspacing="0">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="email-hero" bgcolor="#1f8a4c" style="background-color: #1f8a4c;">
+                      <span class="badge" style="color: #eafff1;">On the way</span>
+                      <h1 style="color: #ffffff;">Your gear is on the way, {{fullName}}!</h1>
+                      <p style="color: #d8f5e3;">
+                        {{itemCountLabel}} dispatched{{#if sentAt}} on {{sentAt}}{{/if}}.
+                        Tracking details and your receipt are below.
+                      </p>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td class="content-cell">
+                      <table class="shipment" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                          <td class="shipment-cell">
+                            <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                              <tr>
+                                <td class="stack-col" width="38%" valign="top" style="padding-right: 18px;">
+                                  <p class="cred-label">Courier</p>
+                                  <p class="cred-value" style="padding-top: 10px;">{{courier}}</p>
+                                </td>
+                                <td class="stack-col stack-col-last" width="62%" valign="top">
+                                  <p class="cred-label">Tracking number</p>
+                                  <table cellpadding="0" cellspacing="0" role="presentation">
+                                    <tr>
+                                      <td class="tracking-chip" bgcolor="#ffffff">{{trackingNumber}}</td>
+                                    </tr>
+                                  </table>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="2" style="padding-top: 18px;">
+                                  {{#if trackingUrl}}
+                                  <table class="track-button-wrap" align="left" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto 0 0;">
+                                    <tr>
+                                      <td align="center" bgcolor="#22a85a" style="background-color: #22a85a; border-radius: 8px; mso-padding-alt: 13px 26px;">
+                                        <a href="{{trackingUrl}}" class="track-button" style="color: #ffffff; text-decoration: none;">Track your parcel</a>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  {{else}}
+                                  <p class="track-hint" style="margin: 0;">
+                                    Enter this number on the {{courier}} website to follow your parcel.
+                                  </p>
+                                  {{/if}}
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p class="section-label" style="margin-top: 30px;">Your receipt</p>
+                      <table class="receipt" cellpadding="0" cellspacing="0">
+                        <thead>
+                          <tr>
+                            <th scope="col">Item</th>
+                            <th scope="col" class="qty">Qty</th>
+                            <th scope="col" class="amount">Amount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {{#each items}}
+                          <tr>
+                            <td>
+                              <span class="item-name">{{this.name}}</span>
+                              {{#if this.variant}}<span class="item-meta">Size {{this.variant}}</span>{{/if}}
+                              <span class="item-meta">{{this.unitPrice}} each</span>
+                            </td>
+                            <td class="qty"><span class="qty-pill">{{this.quantity}}</span></td>
+                            <td class="amount">{{this.lineTotal}}</td>
+                          </tr>
+                          {{else}}
+                          <tr>
+                            <td colspan="3" class="empty">
+                              Item details are on your gear order in the Dory Rider app.
+                            </td>
+                          </tr>
+                          {{/each}}
+                        </tbody>
+                      </table>
+
+                      <table class="totals" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                          <td style="padding-left: 16px;">Items subtotal</td>
+                          <td class="amount" style="padding-right: 16px;">{{subtotal}}</td>
+                        </tr>
+                        <tr>
+                          <td style="padding-left: 16px;">Shipping fee</td>
+                          <td class="amount" style="padding-right: 16px;">{{shippingFee}}</td>
+                        </tr>
+                        <tr class="grand">
+                          <td bgcolor="#f0faf3">Total paid</td>
+                          <td class="amount" bgcolor="#f0faf3" style="text-align: right; color: #1f8a4c;">{{grandTotal}}</td>
+                        </tr>
+                      </table>
+
+                      <table class="meta" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr>
+                          <td class="meta-cell">
+                            <p class="cred-label" style="color: #6b8f7b;">Reference number</p>
+                            <p class="meta-value"><span class="meta-ref">{{referenceNumber}}</span></p>
+                            {{#if deliveryAddress}}
+                            <p class="cred-label" style="color: #6b8f7b; margin-top: 16px;">Delivering to</p>
+                            <p class="meta-value">{{deliveryAddress}}</p>
+                            {{/if}}
+                          </td>
+                        </tr>
+                      </table>
+
+                      <table class="confirm-note" width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin-top: 26px;">
+                        <tr>
+                          <td class="confirm-cell">
+                            <p class="confirm-title">One thing to do when it arrives</p>
+                            <p>
+                              Open the Dory Rider app, go to Profile &rsaquo; Gear and tap
+                              <strong>I received it</strong>. That closes the order, and it is
+                              the only thing that lets you order gear again later.
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+
+                      <p style="font-size: 13px; color: #6b8f7b; margin: 22px 0 0;">
+                        Anything missing or damaged? Tell us before you confirm receipt,
+                        and quote the reference number above.
+                      </p>
+
+                      <p style="margin: 26px 0 0;">Ride safe,<br /><strong style="color: #1f8a4c;">The Dory Team</strong></p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td align="center">
+                      <p>
+                        &copy; Dory Delivery. All rights reserved.<br />
+                        This email was sent because your gear order was dispatched.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
