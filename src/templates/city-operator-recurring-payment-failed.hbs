@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>Auto-Renewal Payment Failed</title>
+    <style type="text/css" rel="stylesheet" media="all">
+      @import url("https://fonts.googleapis.com/css?family=Nunito+Sans:400,700&display=swap");
+      body { width: 100% !important; height: 100%; margin: 0; -webkit-text-size-adjust: none; }
+      a { color: #3869d4; }
+      a img { border: none; }
+      td { word-break: break-word; }
+      .preheader { display: none !important; visibility: hidden; mso-hide: all; font-size: 1px; line-height: 1px; max-height: 0; max-width: 0; opacity: 0; overflow: hidden; }
+      body, td, th { font-family: "Nunito Sans", Helvetica, Arial, sans-serif; }
+      h1 { margin-top: 0; color: #333333; font-size: 22px; font-weight: bold; text-align: left; }
+      td, th { font-size: 16px; }
+      p { margin: 0.4em 0 1.1875em; font-size: 16px; line-height: 1.625; color: #51545e; }
+      .email-wrapper { width: 100%; margin: 0; padding: 0; background-color: #f2f4f6; }
+      .email-content { width: 100%; margin: 0; padding: 0; }
+      .email-masthead { padding: 25px 0; text-align: center; }
+      .email-masthead_name { font-size: 16px; font-weight: bold; color: #a8aaaf; text-decoration: none; text-shadow: 0 1px 0 white; }
+      .email-body_inner { width: 100%; margin: 0 auto; background-color: #ffffff; max-width: 570px; }
+      .email-footer { width: 570px; margin: 0 auto; text-align: center; }
+      .content-cell { padding: 45px; }
+      .alert-banner { background-color: #fdecea; border-left: 4px solid #e0503a; padding: 16px 20px; margin-bottom: 24px; border-radius: 4px; }
+      .alert-banner p { margin: 0; color: #a02c1c; font-size: 15px; }
+      @media only screen and (max-width: 600px) {
+        .email-body_inner, .email-footer { width: 100% !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <span class="preheader">We're having some trouble with your current billing information for your City Operator subscription.</span>
+    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center">
+          <table class="email-content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+
+            <tr>
+              <td class="email-masthead">
+                <span class="email-masthead_name">{{#if appName}}{{appName}}{{else}}DORY{{/if}}</span>
+              </td>
+            </tr>
+
+            <!-- Email Body -->
+            <tr>
+              <td class="email-body" width="100%" cellpadding="0" cellspacing="0">
+                <table class="email-body_inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="content-cell">
+                      <div class="f-fallback">
+                        <h1>Hi {{fullName}},</h1>
+
+                        <div class="alert-banner">
+                          <p>We're having some trouble with your current billing information. We weren't able to charge <strong>{{paymentMethodLabel}}</strong> for your City Operator subscription renewal.</p>
+                        </div>
+
+                        <p>We won't keep retrying automatically, so nothing else will be charged for now. To keep your subscription active without interruption, please log in to your dashboard and update your payment details, or renew manually before your current subscription period ends.</p>
+
+                        <table width="100%" cellpadding="0" cellspacing="0" style="margin: 24px 0; border: 1px solid #eee; border-radius: 4px;">
+                          <tr>
+                            <td style="padding: 12px 16px; background-color: #f9f9f9; border-bottom: 1px solid #eee;">
+                              <span style="color: #888; font-size: 14px;">Payment Method</span>
+                            </td>
+                            <td style="padding: 12px 16px; background-color: #f9f9f9; border-bottom: 1px solid #eee; text-align: right;">
+                              <strong style="color: #333; font-size: 14px;">{{paymentMethodLabel}}</strong>
+                            </td>
+                          </tr>
+                          {{#if renewalDate}}
+                            <tr>
+                              <td style="padding: 12px 16px; {{#if amount}}border-bottom: 1px solid #eee;{{/if}}">
+                                <span style="color: #888; font-size: 14px;">Renewal Date</span>
+                              </td>
+                              <td style="padding: 12px 16px; {{#if amount}}border-bottom: 1px solid #eee;{{/if}} text-align: right;">
+                                <strong style="color: #333; font-size: 14px;">{{renewalDate}}</strong>
+                              </td>
+                            </tr>
+                          {{/if}}
+                          {{#if amount}}
+                            <tr>
+                              <td style="padding: 12px 16px;">
+                                <span style="color: #888; font-size: 14px;">Amount Due</span>
+                              </td>
+                              <td style="padding: 12px 16px; text-align: right;">
+                                <strong style="color: #333; font-size: 14px;">₱{{amount}}</strong>
+                              </td>
+                            </tr>
+                          {{/if}}
+                        </table>
+
+                        <p>If you have any questions or need help updating your billing information, please reach out to our support team.</p>
+
+                        <p>Best regards,<br />The DORY Team</p>
+                      </div>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td>
+                <table class="email-footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="content-cell" align="center">
+                      <p class="f-fallback sub align-center">&copy; {{#if year}}{{year}}{{else}}2026{{/if}} DORY PH, INC. All rights reserved.</p>
+                      <p class="f-fallback sub align-center">
+                        DORY PH, INC.<br />
+                        2nd Floor, Castelo Commercial Building,
+                        Purok 1, Brgy. Sotero Nuesa,
+                        Roxas, Isabela
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
