@@ -1,0 +1,169 @@
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>Your DORY Merchant password reset code</title>
+    <!--[if mso]>
+      <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+    <![endif]-->
+    <style type="text/css">
+      /* Progressive enhancement only. Every style that MATTERS is inlined
+         below, because Gmail strips <style> blocks for non-Google accounts
+         and the old template put everything here — so it arrived unstyled. */
+      body { margin: 0 !important; padding: 0 !important; width: 100% !important; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+      table { border-collapse: collapse !important; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+      a { color: #008036; }
+      .preheader { display: none !important; visibility: hidden; opacity: 0; color: transparent; height: 0; width: 0; max-height: 0; max-width: 0; overflow: hidden; mso-hide: all; font-size: 1px; line-height: 1px; }
+
+      @media only screen and (max-width: 600px) {
+        .sm-full   { width: 100% !important; max-width: 100% !important; }
+        .sm-pad    { padding-left: 24px !important; padding-right: 24px !important; }
+        .sm-code   { font-size: 32px !important; letter-spacing: 8px !important; text-indent: 8px !important; }
+        .sm-stack  { display: block !important; width: 100% !important; }
+      }
+
+      /* Clients that honour prefers-color-scheme. Anything that doesn't simply
+         keeps the inlined light palette, which is why the light styles are the
+         ones written inline. */
+      @media (prefers-color-scheme: dark) {
+        .dk-bg    { background-color: #111827 !important; }
+        .dk-card  { background-color: #1F2937 !important; border-color: #374151 !important; }
+        .dk-panel { background-color: #111827 !important; border-color: #00BF63 !important; }
+        .dk-text  { color: #F9FAFB !important; }
+        .dk-muted { color: #9CA3AF !important; }
+        .dk-code  { color: #34D399 !important; }
+        .dk-note  { background-color: #2A2418 !important; border-color: #6B5A2E !important; }
+        .dk-note-text { color: #FCD34D !important; }
+      }
+    </style>
+  </head>
+
+  <body class="dk-bg" style="margin:0; padding:0; width:100%; background-color:#F2F4F6; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;">
+
+    <!-- Inbox preview line. The code is deliberately NOT repeated here: this
+         text surfaces on lock screens and notification banners, and a reset
+         code visible without unlocking the phone defeats the point of it. -->
+    <div class="preheader">Confirm it's you to finish resetting your password. This code expires in {{expiryMinutes}} minutes.</div>
+
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dk-bg" style="background-color:#F2F4F6;">
+      <tr>
+        <td align="center" style="padding:32px 12px;">
+
+          <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" class="sm-full" style="width:600px; max-width:600px;">
+
+            <!-- Brand.
+                 Text wordmark, no image. A logo would have to be an absolute
+                 URL on the deployed email service (Gmail strips data: URIs),
+                 and it is held back for now. The asset and the /assets route
+                 already exist in this repo if it goes back in. -->
+            <tr>
+              <td align="center" style="padding:0 0 20px 0;">
+                <span class="dk-muted" style="font-size:15px; font-weight:700; letter-spacing:0.6px; color:#00BF63; text-transform:uppercase;">
+                  {{#if appName}}{{appName}}{{else}}DORY Merchant{{/if}}
+                </span>
+              </td>
+            </tr>
+
+            <!-- Card -->
+            <tr>
+              <td class="dk-card" style="background-color:#FFFFFF; border:1px solid #E5E7EB; border-radius:14px; overflow:hidden;">
+
+                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                  <tr>
+                    <td class="sm-pad" style="padding:40px 40px 8px 40px;">
+                      <h1 class="dk-text" style="margin:0 0 12px 0; font-size:22px; line-height:30px; font-weight:700; color:#262626;">
+                        Reset your password
+                      </h1>
+                      <p class="dk-muted" style="margin:0; font-size:15px; line-height:24px; color:#4B5563;">
+                        Hi {{customerName}}, use the code below to finish resetting the password for
+                        {{#if merchantUsername}}
+                          <strong class="dk-text" style="color:#262626;">{{merchantUsername}}</strong>.
+                        {{else}}
+                          your merchant account.
+                        {{/if}}
+                      </p>
+                    </td>
+                  </tr>
+
+                  <!-- The code. Real selectable text, never an image: people
+                       copy it, screen readers read it, and image blocking is
+                       on by default in plenty of clients. -->
+                  <tr>
+                    <td class="sm-pad" style="padding:28px 40px 8px 40px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dk-panel" style="background-color:#F0FAF4; border:2px solid #00BF63; border-radius:12px;">
+                        <tr>
+                          <td align="center" style="padding:22px 16px 8px 16px;">
+                            <div class="dk-muted" style="font-size:11px; font-weight:700; letter-spacing:1.4px; color:#6B7280; text-transform:uppercase;">
+                              Verification code
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td align="center" style="padding:0 16px 22px 16px;">
+                            <div class="sm-code dk-code" style="font-family:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace; font-size:40px; line-height:52px; font-weight:700; letter-spacing:12px; text-indent:12px; color:#008036;">{{otpCode}}</div>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <!-- Expiry -->
+                  <tr>
+                    <td align="center" class="sm-pad" style="padding:4px 40px 0 40px;">
+                      <p class="dk-muted" style="margin:0; font-size:14px; line-height:22px; color:#4B5563;">
+                        Expires in <strong class="dk-text" style="color:#262626;">{{expiryMinutes}} minutes</strong> &middot; usable once
+                      </p>
+                    </td>
+                  </tr>
+
+                  <!-- Security note -->
+                  <tr>
+                    <td class="sm-pad" style="padding:28px 40px 0 40px;">
+                      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="dk-note" style="background-color:#FFF7ED; border:1px solid #FED7AA; border-radius:10px;">
+                        <tr>
+                          <td style="padding:14px 16px;">
+                            <p class="dk-note-text" style="margin:0; font-size:13px; line-height:20px; color:#9A3412;">
+                              <strong>Keep this code to yourself.</strong> Nobody from DORY will ever call, text or email you asking for it.
+                            </p>
+                          </td>
+                        </tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <!-- Not you -->
+                  <tr>
+                    <td class="sm-pad" style="padding:24px 40px 40px 40px;">
+                      <p class="dk-muted" style="margin:0; font-size:14px; line-height:22px; color:#4B5563;">
+                        Didn't ask for this? You can ignore this email &mdash; your password stays as it is. If it keeps happening, someone may know your username, so
+                        <a href="mailto:dorydelivery@gmail.com" style="color:#008036; font-weight:600; text-decoration:underline;">let us know</a>.
+                      </p>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td align="center" style="padding:24px 24px 8px 24px;">
+                <p class="dk-muted" style="margin:0 0 6px 0; font-size:13px; line-height:20px; color:#6B7280;">
+                  Need a hand? <a href="mailto:dorydelivery@gmail.com" style="color:#008036; text-decoration:underline;">dorydelivery@gmail.com</a>
+                </p>
+                <p class="dk-muted" style="margin:0; font-size:12px; line-height:18px; color:#9CA3AF;">
+                  This is an automated message &mdash; replies aren't monitored.
+                </p>
+              </td>
+            </tr>
+
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
