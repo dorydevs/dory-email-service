@@ -15,6 +15,9 @@ if (!apiKey) {
 const resend = new Resend(apiKey);
 
 // Default sender address
+// dorydelivery.com is not yet verified on the Resend key — sending from it
+// fails with "API key is not authorized". Switch back once the DNS records are
+// added at resend.com/domains.
 const DEFAULT_FROM = "DORY <noreply@groceriacorporation.com>";
 
 /**
