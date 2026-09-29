@@ -1,0 +1,413 @@
+{{!--
+  Receipt sent the moment Xendit confirms a rider's gear payment. Triggered from
+  groceria-api fulfillGearOrder (the webhook the payment relay calls), with the
+  view-model from utilities/buildGearReceiptEmailData.js.
+
+  Companion to rider-gear-dispatch.hbs, which covers the same order once it ships.
+
+  Every value arrives pre-formatted — no arithmetic or currency formatting here.
+
+  Layout rules this file follows:
+    - ONE card. Inside it, sections are separated by space and hairlines, not by
+      nested tinted boxes. The only panel with a background is the non-refundable
+      notice, so that it is unmistakably the thing to read.
+    - tables only where columns must align (item rows, totals, label/value), not
+      as decoration
+    - inline styles for anything that must survive; Gmail keeps <style> but
+      strips @import, and older Outlook ignores most of it
+    - no flexbox, no background-image, and no rounded corner is load-bearing —
+      Outlook squares every radius
+    - bgcolor attributes shadow the CSS colours for Outlook 2007–2019
+    - the <style> block only adds progressive extras (dark mode, narrow screens)
+      and always uses !important, since inline styles outrank it
+
+  The sender is noreply@ and nothing sets a reply-to, so the footer says plainly
+  that replies are not read. If a monitored address is ever added, that footer
+  line is what changes.
+--}}
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta name="format-detection" content="telephone=no,address=no,email=no" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="supported-color-schemes" content="light dark" />
+    <title>{{referenceNumber}}</title>
+    <style type="text/css">
+      /* Outlook: stop it inventing line-height and stretching tables */
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      /* Stop iOS/Android auto-linking addresses and dates in their own blue */
+      a[x-apple-data-detectors],
+      .unstyled-link a {
+        color: inherit !important;
+        text-decoration: none !important;
+        font-size: inherit !important;
+        font-weight: inherit !important;
+      }
+
+      @media only screen and (max-width: 480px) {
+        .gutter {
+          padding-left: 22px !important;
+          padding-right: 22px !important;
+        }
+        .amount {
+          font-size: 30px !important;
+        }
+        /* Label/value pairs stack instead of squeezing into two narrow columns */
+        .stack-label {
+          display: block !important;
+          width: 100% !important;
+          padding-bottom: 2px !important;
+        }
+        .stack-value {
+          display: block !important;
+          width: 100% !important;
+          padding-bottom: 14px !important;
+        }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        .page,
+        .page-bg {
+          background-color: #10120f !important;
+        }
+        .card {
+          background-color: #191c18 !important;
+          border-color: #2a2f29 !important;
+        }
+        .ink {
+          color: #f1f4f1 !important;
+        }
+        .muted {
+          color: #9aa69f !important;
+        }
+        .hairline {
+          border-color: #2a2f29 !important;
+        }
+        /* The notice keeps its warm tint so it stays the loudest thing here */
+        .warn {
+          background-color: #2e1b12 !important;
+        }
+        .warn-ink {
+          color: #ffc9ac !important;
+        }
+      }
+    </style>
+  </head>
+  <body
+    class="page"
+    style="margin:0;padding:0;width:100% !important;background-color:#EEF0F3;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-family:'Nunito Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;"
+  >
+    {{!-- Inbox preview line: the amount and the warning, the two things worth
+          seeing before opening. --}}
+    <div
+      style="display:none;visibility:hidden;font-size:1px;line-height:1px;max-height:0;max-width:0;opacity:0;overflow:hidden;mso-hide:all;"
+    >
+      {{grandTotal}} paid · {{referenceNumber}} · final sale, non-refundable.
+    </div>
+
+    <table
+      class="page-bg"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      role="presentation"
+      bgcolor="#EEF0F3"
+      style="background-color:#EEF0F3;margin:0;padding:0;"
+    >
+      <tr>
+        <td align="center" style="padding:32px 12px;">
+          <!--[if mso]>
+          <table width="560" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td>
+          <![endif]-->
+          <table
+            class="card"
+            width="100%"
+            cellpadding="0"
+            cellspacing="0"
+            border="0"
+            role="presentation"
+            bgcolor="#FFFFFF"
+            style="max-width:560px;width:100%;background-color:#FFFFFF;border:1px solid #E3E8E5;border-radius:14px;"
+          >
+
+            {{!-- Brand bar. "Receipt", never "Official Receipt": in PH that
+                  names a BIR-regulated document, which this email is not. --}}
+            <tr>
+              <td
+                bgcolor="#0F1A14"
+                class="gutter"
+                style="background-color:#0F1A14;padding:16px 32px;border-radius:13px 13px 0 0;font-size:16px;font-weight:700;color:#FFFFFF;letter-spacing:1.6px;mso-line-height-rule:exactly;line-height:20px;"
+              >
+                DORY<span
+                  style="font-size:10px;font-weight:700;color:#7E8C84;letter-spacing:1.6px;"
+                >
+                  &nbsp;&nbsp;RECEIPT</span
+                >
+              </td>
+            </tr>
+
+            {{!-- Paid state and the amount: what the rider opened this to check.
+                  Coloured text rather than a badge, so there is no box here. --}}
+            <tr>
+              <td class="gutter" align="center" style="padding:34px 32px 0;">
+                <p
+                  style="margin:0;font-size:11px;font-weight:700;color:#1E7A33;letter-spacing:1.4px;text-transform:uppercase;mso-line-height-rule:exactly;line-height:14px;"
+                >
+                  &#10003;&nbsp; Payment received
+                </p>
+                <p
+                  class="amount ink"
+                  style="margin:12px 0 0;font-size:36px;font-weight:700;color:#0F1A14;letter-spacing:-0.8px;mso-line-height-rule:exactly;line-height:40px;"
+                >
+                  {{grandTotal}}
+                </p>
+                <p
+                  class="muted"
+                  style="margin:8px 0 0;font-size:14px;color:#6B7671;mso-line-height-rule:exactly;line-height:20px;"
+                >
+                  Thanks {{firstName}} — your gear is being prepared.
+                </p>
+                {{!-- Labelled, because a bare code means nothing to the rider
+                      holding it. --}}
+                <p
+                  class="muted"
+                  style="margin:18px 0 0;font-size:10px;font-weight:700;color:#8E9A94;letter-spacing:1.3px;text-transform:uppercase;mso-line-height-rule:exactly;line-height:13px;"
+                >
+                  Order reference
+                </p>
+                <p
+                  class="ink unstyled-link"
+                  style="margin:3px 0 0;font-size:14px;font-weight:700;color:#3C4A43;letter-spacing:0.7px;mso-line-height-rule:exactly;line-height:18px;"
+                >
+                  {{referenceNumber}}
+                </p>
+              </td>
+            </tr>
+
+            {{!-- Items. Quantity and unit price sit under the name rather than
+                  in their own columns, so a long name never squeezes the price
+                  into a wrap on a phone. --}}
+            <tr>
+              <td class="gutter" style="padding:30px 32px 0;">
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  role="presentation"
+                >
+                  <tr>
+                    <td
+                      class="muted"
+                      style="padding:0 0 6px;font-size:10px;font-weight:700;color:#8E9A94;letter-spacing:1.3px;text-transform:uppercase;mso-line-height-rule:exactly;line-height:13px;"
+                    >
+                      Order summary
+                    </td>
+                    <td
+                      class="muted"
+                      align="right"
+                      style="padding:0 0 6px;font-size:10px;font-weight:700;color:#8E9A94;letter-spacing:1.3px;text-transform:uppercase;mso-line-height-rule:exactly;line-height:13px;"
+                    >
+                      {{itemCountLabel}}
+                    </td>
+                  </tr>
+                  {{#each items}}
+                    <tr>
+                      <td
+                        class="hairline ink"
+                        style="padding:14px 0;border-top:1px solid #EDF0EE;font-size:15px;font-weight:700;color:#0F1A14;mso-line-height-rule:exactly;line-height:20px;"
+                      >
+                        {{this.name}}
+                        <span
+                          class="muted"
+                          style="display:block;margin-top:4px;font-size:13px;font-weight:400;color:#8E9A94;mso-line-height-rule:exactly;line-height:17px;"
+                          >{{#if this.variant}}Size {{this.variant}} &nbsp;·&nbsp;
+                          {{/if}}{{this.quantity}} &times; {{this.unitPrice}}</span
+                        >
+                      </td>
+                      <td
+                        class="hairline ink"
+                        align="right"
+                        valign="top"
+                        style="padding:14px 0;border-top:1px solid #EDF0EE;font-size:15px;font-weight:700;color:#0F1A14;white-space:nowrap;mso-line-height-rule:exactly;line-height:20px;"
+                      >
+                        {{this.lineTotal}}
+                      </td>
+                    </tr>
+                  {{/each}}
+
+                  {{!-- Totals continue the same table: no separate panel, just a
+                        rule above the line that matters. --}}
+                  <tr>
+                    <td
+                      class="hairline muted"
+                      style="padding:14px 0 0;border-top:1px solid #EDF0EE;font-size:14px;color:#6B7671;mso-line-height-rule:exactly;line-height:18px;"
+                    >
+                      Subtotal
+                    </td>
+                    <td
+                      class="hairline ink"
+                      align="right"
+                      style="padding:14px 0 0;border-top:1px solid #EDF0EE;font-size:14px;color:#3C4A43;white-space:nowrap;mso-line-height-rule:exactly;line-height:18px;"
+                    >
+                      {{subtotal}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="muted"
+                      style="padding:7px 0 0;font-size:14px;color:#6B7671;mso-line-height-rule:exactly;line-height:18px;"
+                    >
+                      Shipping
+                    </td>
+                    <td
+                      class="ink"
+                      align="right"
+                      style="padding:7px 0 0;font-size:14px;color:#3C4A43;white-space:nowrap;mso-line-height-rule:exactly;line-height:18px;"
+                    >
+                      {{shippingFee}}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td
+                      class="hairline ink"
+                      style="padding:12px 0 0;border-top:1px solid #DCE3DF;font-size:15px;font-weight:700;color:#0F1A14;mso-line-height-rule:exactly;line-height:20px;"
+                    >
+                      Total paid
+                    </td>
+                    <td
+                      class="hairline"
+                      align="right"
+                      style="padding:12px 0 0;border-top:1px solid #DCE3DF;font-size:18px;font-weight:700;color:#1E7A33;white-space:nowrap;mso-line-height-rule:exactly;line-height:20px;"
+                    >
+                      {{grandTotal}}
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+
+            {{!-- The one panel in the email, because this is the one thing the
+                  rider must not miss. Background and border sit on this cell
+                  directly — no nested table. States the policy only; it promises
+                  no replacement or claims process, because none is defined. --}}
+            <tr>
+              <td class="gutter" style="padding:26px 32px 0;">
+                <div
+                  class="warn"
+                  style="background-color:#FFF6F1;border-left:3px solid #E86B3D;border-radius:0 8px 8px 0;padding:14px 18px;"
+                >
+                  <span
+                    class="warn-ink"
+                    style="display:block;font-size:14px;font-weight:700;color:#8A3A14;mso-line-height-rule:exactly;line-height:19px;"
+                    >Final sale — non-refundable</span
+                  >
+                  <span
+                    class="warn-ink"
+                    style="display:block;margin-top:5px;font-size:13px;color:#8A3A14;mso-line-height-rule:exactly;line-height:20px;"
+                    >Rider gear cannot be returned, exchanged, or refunded once
+                    payment is confirmed.</span
+                  >
+                </div>
+              </td>
+            </tr>
+
+            {{!-- Delivery and payment facts, so a wrong name, address or number
+                  gets caught before the courier is booked. --}}
+            <tr>
+              <td class="gutter" style="padding:26px 32px 0;">
+                <table
+                  width="100%"
+                  cellpadding="0"
+                  cellspacing="0"
+                  border="0"
+                  role="presentation"
+                >
+                  {{#if deliveryAddress}}
+                    <tr>
+                      <td
+                        class="muted stack-label"
+                        width="34%"
+                        style="padding:0 0 14px;font-size:10px;font-weight:700;color:#8E9A94;letter-spacing:1.3px;text-transform:uppercase;vertical-align:top;mso-line-height-rule:exactly;line-height:18px;"
+                      >
+                        Ship to
+                      </td>
+                      <td
+                        class="ink stack-value unstyled-link"
+                        style="padding:0 0 14px;font-size:13px;color:#3C4A43;vertical-align:top;mso-line-height-rule:exactly;line-height:19px;"
+                      >
+                        <span
+                          class="ink"
+                          style="display:block;font-weight:700;color:#0F1A14;"
+                          >{{fullName}}</span
+                        >
+                        {{deliveryAddress}}
+                        {{#if contactNumber}}
+                          <span class="muted" style="display:block;color:#8E9A94;"
+                            >{{contactNumber}}</span
+                          >
+                        {{/if}}
+                      </td>
+                    </tr>
+                  {{/if}}
+                  {{#if paymentMethod}}
+                    <tr>
+                      <td
+                        class="muted stack-label"
+                        style="padding:0 0 14px;font-size:10px;font-weight:700;color:#8E9A94;letter-spacing:1.3px;text-transform:uppercase;vertical-align:top;mso-line-height-rule:exactly;line-height:18px;"
+                      >
+                        Paid with
+                      </td>
+                      <td
+                        class="ink stack-value unstyled-link"
+                        style="padding:0 0 14px;font-size:13px;color:#3C4A43;vertical-align:top;mso-line-height-rule:exactly;line-height:19px;"
+                      >
+                        {{paymentMethod}}{{#if paidAt}}
+                          <span class="muted" style="color:#8E9A94;">
+                            · {{paidAt}}</span
+                          >
+                        {{/if}}
+                      </td>
+                    </tr>
+                  {{/if}}
+                </table>
+              </td>
+            </tr>
+
+            {{!-- Footer --}}
+            <tr>
+              <td
+                class="gutter hairline muted"
+                style="padding:16px 32px 30px;font-size:12px;color:#8E9A94;mso-line-height-rule:exactly;line-height:19px;"
+              >
+                <span
+                  class="hairline"
+                  style="display:block;border-top:1px solid #EDF0EE;padding-top:18px;"
+                >
+                  We'll email your tracking number once your gear ships.
+                  <br />
+                  This is an automated receipt — please do not reply, as replies
+                  to this address are not read.
+                  <br /><br />
+                  &copy; Dory Delivery
+                </span>
+              </td>
+            </tr>
+
+          </table>
+          <!--[if mso]>
+          </td></tr></table>
+          <![endif]-->
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

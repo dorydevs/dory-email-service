@@ -146,13 +146,26 @@ const sendEmailWithTemplate = async (
       }
     }
 
-    // Send the email using Resend with retry mechanism
-    const result = await retryWithBackoff(() =>
-      resend.emails.send(emailOptions)
-    );
+    // Send the email using Resend with retry mechanism.
+    //
+    // The SDK (v6) resolves to { data, error } and does NOT throw when the API
+    // rejects the send, so the error has to be read out and raised by hand —
+    // otherwise a refused email is indistinguishable from a delivered one and
+    // callers get success with an undefined messageId.
+    const result = await retryWithBackoff(async () => {
+      const { data, error } = await resend.emails.send(emailOptions);
+      if (error) {
+        const err = new Error(error.message || "Resend rejected the email");
+        err.name = error.name || "ResendError";
+        // Raised as-is: retryWithBackoff only retries connection errors, and a
+        // rejection here is a bad payload or key, which a retry won't fix.
+        throw err;
+      }
+      return data;
+    });
 
     return {
-      messageId: result.id,
+      messageId: result?.id,
     };
   } catch (error) {
     console.error("Failed to send email after retries:", error);
