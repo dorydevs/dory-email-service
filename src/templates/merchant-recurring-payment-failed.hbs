@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Auto-Renewal Payment Failed</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            color: #333333;
+        }
+
+        .email-container {
+            max-width: 600px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        }
+
+        h1 {
+            font-size: 24px;
+            color: #111827;
+            margin-bottom: 24px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: #374151;
+            margin-bottom: 24px;
+        }
+
+        .alert-banner {
+            background-color: #fdecea;
+            border-left: 4px solid #e0503a;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            border-radius: 4px;
+        }
+
+        .alert-banner p {
+            margin: 0;
+            color: #a02c1c;
+            font-size: 15px;
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 0 24px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .details-table td {
+            padding: 12px 16px;
+            font-size: 14px;
+        }
+
+        .details-table tr:not(:last-child) td {
+            border-bottom: 1px solid #eee;
+        }
+
+        .details-table .label {
+            background-color: #f9f9f9;
+            color: #888888;
+        }
+
+        .details-table .value {
+            background-color: #f9f9f9;
+            color: #333333;
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .footer {
+            font-size: 13px;
+            color: #9ca3af;
+            text-align: center;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-container">
+        <h1>Hi {{fullName}},</h1>
+
+        <div class="alert-banner">
+            <p>We're having some trouble with your billing information. We weren't able to charge {{paymentMethodLabel}} for your Dory Merchant subscription renewal.</p>
+        </div>
+
+        <p>We won't keep retrying automatically for now. To keep your subscription active without interruption, please open the app and update your payment details, retry the payment, or renew manually before your current subscription period ends.</p>
+
+        <table class="details-table" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+                <td class="label">Payment Method</td>
+                <td class="value">{{paymentMethodLabel}}</td>
+            </tr>
+            {{#if renewalDate}}
+            <tr>
+                <td class="label">Renewal Date</td>
+                <td class="value">{{renewalDate}}</td>
+            </tr>
+            {{/if}}
+            {{#if amount}}
+            <tr>
+                <td class="label">Amount Due</td>
+                <td class="value">&#8369;{{amount}}</td>
+            </tr>
+            {{/if}}
+        </table>
+
+        <p>If you have any questions or need help updating your billing information, please reach out to our support team.</p>
+
+        <p>Thank you,<br />The DORY Team</p>
+
+        <div class="footer">&copy; {{#if year}}{{year}}{{else}}2026{{/if}} DORY PH, INC. All rights reserved.</div>
+    </div>
+</body>
+
+</html>
