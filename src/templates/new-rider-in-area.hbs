@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
+    <title>{{#if certified}}New Certified Rider In Your Area{{else}}New Rider In Your Area{{/if}}</title>
+    <style type="text/css" rel="stylesheet" media="all">
+      @import url("https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800&display=swap");
+
+      body {
+        width: 100% !important;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        -webkit-text-size-adjust: none;
+        background-color: #f4f6f9;
+        color: #0f172a;
+      }
+
+      body, td, th {
+        font-family: "Inter", "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+
+      table { border-collapse: collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+      td { word-break: break-word; }
+
+      .preheader {
+        display: none !important;
+        visibility: hidden;
+        mso-hide: all;
+        font-size: 1px;
+        line-height: 1px;
+        max-height: 0;
+        max-width: 0;
+        opacity: 0;
+        overflow: hidden;
+      }
+
+      .email-wrapper { width: 100%; margin: 0; padding: 0; background-color: #f4f6f9; }
+
+      .email-body_inner {
+        width: 480px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(15, 23, 42, 0.07);
+      }
+
+      /* background-color is the Outlook fallback. Without it the gradient drops
+         out and the white masthead text lands on white. */
+      .email-masthead {
+        background-color: #08b35c;
+        background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.045) 0px, rgba(255, 255, 255, 0.045) 2px, rgba(255, 255, 255, 0) 2px, rgba(255, 255, 255, 0) 26px), linear-gradient(135deg, #0cc468 0%, #05a352 100%);
+        padding: 30px 32px 34px;
+        text-align: center;
+      }
+      /* The hosted mascot is a JPEG on a black background, so the badge is dark
+         on purpose — a light badge would show the image's black box. */
+      /* border-collapse: collapse (set on every table above) squares off a
+         bordered cell, so the two rounded, bordered boxes opt back out. */
+      .mascot-wrap, .details { border-collapse: separate; }
+      .mascot-badge {
+        width: 76px;
+        height: 76px;
+        background-color: #0b0b0b;
+        border: 3px solid #5fd699;
+        border-radius: 50%;
+        overflow: hidden;
+        text-align: center;
+        vertical-align: middle;
+      }
+      .mascot-badge img { display: block; margin: 0 auto; border: 0; outline: none; }
+      .email-masthead p.masthead-eyebrow {
+        margin: 16px 0 0;
+        color: #d9f7e6;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      .masthead-rule { width: 26px; height: 2px; background-color: #7fe0ad; font-size: 0; line-height: 0; }
+      .email-masthead h1 { margin: 0; color: #ffffff; font-size: 22px; line-height: 1.3; font-weight: 800; }
+
+      .content-cell { padding: 32px 34px 34px; }
+      .content-cell p { color: #475569; font-size: 14px; line-height: 1.7; margin: 0 0 22px; }
+      .content-cell p strong { color: #0f172a; }
+      /* The p.class selectors below outrank the base paragraph rule above. */
+      .content-cell p.greeting { margin: 0 0 8px; color: #0f172a; font-size: 16px; font-weight: 700; }
+
+      .details { background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; }
+      .details-cell { padding: 20px 22px 12px; }
+      .content-cell p.details-title {
+        margin: 0 0 6px;
+        color: #475569;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.9px;
+        line-height: 1.4;
+        text-transform: uppercase;
+      }
+      .details-row td { padding: 9px 0; font-size: 13px; vertical-align: top; }
+      .details-label { color: #64748b; white-space: nowrap; padding-right: 14px !important; }
+      .details-value { color: #0f172a; font-weight: 700; text-align: right; }
+
+      .divider { border-top: 1px solid #e9eef4; font-size: 0; line-height: 0; height: 1px; }
+      .content-cell p.note { font-size: 13px; color: #64748b; margin: 0 0 18px; }
+      .content-cell p.signoff { margin: 0; }
+
+      .email-footer { width: 480px; margin: 0 auto; text-align: center; }
+      .email-footer p { color: #94a3b8; font-size: 12px; line-height: 1.6; padding: 22px 0 28px; margin: 0; }
+
+      @media only screen and (max-width: 520px) {
+        .email-body_inner, .email-footer { width: 100% !important; }
+        .email-masthead, .content-cell {
+          padding-left: 22px !important;
+          padding-right: 22px !important;
+        }
+        .email-masthead h1 { font-size: 20px !important; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <span class="preheader">{{riderFullName}} {{#if certified}}has been certified and is now active{{else}}has just registered{{/if}} in your service area.</span>
+    <!-- Pads the inbox preview so the masthead does not bleed into it. -->
+    <div style="display: none; max-height: 0; overflow: hidden; mso-hide: all;">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
+    <table class="email-wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+      <tr>
+        <td align="center" style="padding: 28px 12px 0;">
+          <table class="email-body_inner" align="center" width="480" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td class="email-masthead" align="center" bgcolor="#08b35c" style="background-color: #08b35c;">
+                <table class="mascot-wrap" align="center" cellpadding="0" cellspacing="0" role="presentation" style="margin: 0 auto;">
+                  <tr>
+                    <td class="mascot-badge" width="76" height="76" align="center" valign="middle" bgcolor="#0b0b0b">
+                      <!-- Must be an absolute URL; a relative path cannot load in an email client. -->
+                      <img src="https://dorydelivery.com/dory-mascot.png" width="54" height="63" alt="Dory" />
+                    </td>
+                  </tr>
+                </table>
+                <p class="masthead-eyebrow" style="color: #d9f7e6;">Dory Platform</p>
+                <table align="center" cellpadding="0" cellspacing="0" role="presentation" style="margin: 10px auto 14px;">
+                  <tr>
+                    <td class="masthead-rule" width="26" height="2" bgcolor="#7fe0ad">&nbsp;</td>
+                  </tr>
+                </table>
+                <h1 style="color: #ffffff;">{{#if certified}}New Certified Rider In Your Area{{else}}New Rider In Your Area{{/if}}</h1>
+              </td>
+            </tr>
+
+            <tr>
+              <td class="content-cell">
+                <p class="greeting">Hi {{#if operatorName}}{{operatorName}}{{else}}there{{/if}},</p>
+                <p>
+                  {{#if certified}}A new rider has just been approved and is now active{{else}}A new rider account has just been created{{/if}}
+                  {{#if areaName}}in <strong>{{areaName}}</strong> &mdash; your assigned service area.{{else}}in your assigned service area.{{/if}}
+                  No action is needed on your part &mdash; this is just to keep you in the loop.
+                </p>
+
+                <table class="details" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                  <tr>
+                    <td class="details-cell">
+                      <p class="details-title">Rider details</p>
+                      <table width="100%" cellpadding="0" cellspacing="0" role="presentation">
+                        <tr class="details-row">
+                          <td class="details-label">Full Name</td>
+                          <td class="details-value" align="right">{{riderFullName}}</td>
+                        </tr>
+                        {{#if riderContactNumber}}
+                        <tr class="details-row">
+                          <td class="details-label">Contact Number</td>
+                          <td class="details-value" align="right">{{riderContactNumber}}</td>
+                        </tr>
+                        {{/if}}
+                        {{#if riderEmail}}
+                        <tr class="details-row">
+                          <td class="details-label">Email Address</td>
+                          <td class="details-value" align="right">{{riderEmail}}</td>
+                        </tr>
+                        {{/if}}
+                        {{#if serviceArea}}
+                        <tr class="details-row">
+                          <td class="details-label">Service Area</td>
+                          <td class="details-value" align="right">{{serviceArea}}</td>
+                        </tr>
+                        {{/if}}
+                        {{#if joinedAt}}
+                        <tr class="details-row">
+                          <td class="details-label">Joined</td>
+                          <td class="details-value" align="right">{{joinedAt}}</td>
+                        </tr>
+                        {{/if}}
+                      </table>
+                    </td>
+                  </tr>
+                </table>
+
+                <table width="100%" cellpadding="0" cellspacing="0" role="presentation" style="margin: 26px 0 20px;">
+                  <tr>
+                    <td class="divider">&nbsp;</td>
+                  </tr>
+                </table>
+
+                <p class="note">
+                  You can view this rider, along with everyone else in your area, in
+                  your Dory Platform dashboard.
+                </p>
+
+                <p class="signoff">Thank you,<br /><strong style="color: #08a152;">The Dory Team</strong></p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <table class="email-footer" align="center" width="480" cellpadding="0" cellspacing="0" role="presentation">
+            <tr>
+              <td align="center">
+                <p>
+                  &copy; Dory Delivery. All rights reserved.<br />
+                  This email was sent because a rider in your service area was {{#if certified}}certified{{else}}registered{{/if}}.
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
