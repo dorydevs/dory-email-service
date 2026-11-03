@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <h2 style="text-align:center;">DORY PH, INC.<br />
+        {{#if finalNotice}}Final Notice{{else}}Notice{{/if}}: Low Deliveries in Your Service Area
+    </h2>
+
+    <p>Dear {{name}},</p>
+
+    <p>
+        Pursuant to the Non-Activity of Partner Operations Policy stated under
+        Memorandum No. 2025.10.033, partners are required to complete a minimum
+        of ten (10) delivery transactions per month in each of their assigned
+        service areas.
+    </p>
+
+    <p>
+        Our records show that the service area(s) listed below recorded fewer
+        than ten (10) delivered transactions in <strong>{{month}}</strong>:
+    </p>
+
+    <ul>
+        {{#each areas}}
+        <li><strong>{{this}}</strong></li>
+        {{/each}}
+    </ul>
+
+    {{#if finalNotice}}
+    <p>
+        <strong>This is your final notice for the area(s) above.</strong> If
+        they again record fewer than ten (10) delivered transactions next
+        month, they will be removed from your partnership account, and orders
+        from them will no longer be assigned to you. If every service area on
+        your account is removed, your partnership account will be terminated.
+    </p>
+    {{else}}
+    <p>
+        Please increase your delivery activity in the area(s) above. If they
+        continue to record fewer than ten (10) delivered transactions in the
+        coming months, they may be removed from your partnership account.
+    </p>
+    {{/if}}
+
+    <p>
+        If you have questions about this notice, please reply to this email.
+    </p>
+
+    <br />
+    <p>--<br />
+        Regards,<br />
+        <strong>Admin. Assistant</strong><br />
+        Dory Ph, Inc.
+    </p>
+</body>
+
+</html>

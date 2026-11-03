@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333;">
+    <h2 style="text-align:center;">DORY PH, INC.<br />Notice of Service Area Removal</h2>
+
+    <p>Dear {{name}},</p>
+
+    <p>
+        Pursuant to the Non-Activity of Partner Operations Policy stated under
+        Memorandum No. 2025.10.033, partners are required to complete a minimum
+        of ten (10) delivery transactions per month in each of their assigned
+        service areas.
+    </p>
+
+    <p>
+        Our records show that the service area(s) listed below continued to
+        record fewer than ten (10) delivered transactions in a month, despite
+        the notice(s) previously sent to you, and have therefore been removed
+        from your partnership account:
+    </p>
+
+    <ul>
+        {{#each areas}}
+        <li><strong>{{this}}</strong></li>
+        {{/each}}
+    </ul>
+
+    <p>
+        Orders from the removed area(s) will no longer be assigned to your
+        account.
+    </p>
+
+    <p>
+        <strong>Your account remains active</strong> for your other assigned
+        service areas. Please continue to meet the minimum activity requirement
+        in those areas to keep them active.
+    </p>
+
+    <p>
+        If you have questions about this notice, please reply to this email.
+    </p>
+
+    <br />
+    <p>--<br />
+        Regards,<br />
+        <strong>Admin. Assistant</strong><br />
+        Dory Ph, Inc.
+    </p>
+</body>
+
+</html>
